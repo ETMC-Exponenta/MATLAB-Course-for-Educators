@@ -1,0 +1,31 @@
+<style>
+body {font-family: Arial, Verdana; font-size: 12pt}
+
+table { font-family: Arial, Verdana;}
+td {font-family: Arial, Verdana; font-size: 12pt}
+h1 {font-family: Arial, Verdana; font-size: 14pt; font-weight: bold;  color: #FF0000}
+h2 {font-family: Arial, Verdana; font-size: 12pt; font-weight: bold;  color: #FF0000; margin: 10px}
+h3 {font-family: Arial, Verdana; font-size: 12pt; font-weight: bold;  color: green; margin: 10px}
+
+
+a:link { color: #3366CC;text-decoration: none;  font-weight: bold; font-size: 12pt}
+a:visited { color: #3366CC;  font-weight: bold; text-decoration: none;}
+a:hover { color: #FF0000; text-decoration: none; font-weight: bold;}
+
+a.classbar {font-size: 10pt}
+
+p { margin: 10px}
+p.classb { margin-left: 10px}
+p.classbar {margin-left: 10px;margin-bottom: 0px;color: #000000;font-size: 14pt; text-decoration: underline;}
+p.classf {margin: 10px; font-size: 14px;}
+p.classh {color: #000000;font-size: 18pt}
+p.classborder {border: double 4px #FF0000; font-size:16pt; font-weight: bold}
+p.classs { margin: 5px}
+p.classtopic { margin: 5px; font-size: 10pt; font-style: italic; font-weight: bold;  color: green; }
+p.classalert {border: 1px solid green;padding: 5px;background: #FFFFCC; font-weight: bold; color: #ffa500; text-align: center; font-size:16pt;}
+
+.block1 { height: 60px; padding: 10px;}
+
+#primer {height:500px;width:692px; margin-left:10px; border: 2px solid gray; overflow : scroll;}
+#bar {height:360px;width:245px; margin-left:10px; border: 1px solid gray; overflow : scroll;}
+#bar2 {height:240px;width:245px; margin-left:10px; border: 1px solid gray; overflow : scroll;}
