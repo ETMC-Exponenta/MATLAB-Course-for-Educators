@@ -2,7 +2,8 @@ function addEduCourseToPath(add)
 if nargin < 1
     add = true;
 end
-fs = split(genpath(fileparts(mfilename('fullpath'))), ';'); % get folders
+dir = fullfile(fileparts(mfilename('fullpath')), 'EduCourseFiles'); % get files folder
+fs = split(genpath(dir), ';'); % get subfolders
 fs = fs(~contains(rmmissing(fs), {'.git' 'work'})); % filter folders
 if add
     addpath(fs{:}); % add folders to path
