@@ -102,14 +102,13 @@ dev_on.m
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
-      <file>${PROJECT_ROOT}\icon-16.png</file>
-      <file>${PROJECT_ROOT}\icon-24.png</file>
       <file>${PROJECT_ROOT}\icon-install.png</file>
       <file>${PROJECT_ROOT}\icon-save.png</file>
       <file>${PROJECT_ROOT}\icon-start.png</file>
       <file>${PROJECT_ROOT}\icon-store.png</file>
       <file>${PROJECT_ROOT}\icon.png</file>
       <file>${PROJECT_ROOT}\README.md</file>
+      <file>${PROJECT_ROOT}\resources</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded>

@@ -26,6 +26,7 @@ classdef Dev < handle
                 matlab.addons.toolbox.toolboxVersion(obj.fname, v);
                 obj.v = v;
             end
+            obj.seticons();
             matlab.addons.toolbox.packageToolbox(obj.fname, obj.pname);
             obj.echo('has been deployed');
         end
@@ -59,6 +60,37 @@ classdef Dev < handle
             % Display service message
             fprintf('%s v%s %s\n', obj.pname, obj.v, msg);
         end
+        
+        function txt = readtxt(~, fpath)
+            % Read text from file
+            f = fopen(fpath, 'r', 'n', 'windows-1251');
+            txt = fread(f, '*char')';
+            fclose(f);
+        end
+        
+        function txt = writetxt(~, txt, fpath)
+            % Wtite text to file
+            fid = fopen(fpath, 'w', 'n', 'windows-1251');
+            fwrite(fid, unicode2native(txt, 'windows-1251'));
+            fclose(fid);
+        end
+        
+        function seticons(obj)
+            % Set icons to app
+            xmlfile = 'DesktopToolset.xml';
+            oldtxt = '<icon filename="matlab_app_generic_icon_' + string([16; 24]) + '"/>';
+            newtxt = '<icon path="./" filename="icon_' + string([16; 24]) + '.png"/>';
+            if isfile(xmlfile) && isfolder('resources')
+                if all(isfile("resources/icon_" + [16 24] + ".png"))
+                    txt = obj.readtxt(xmlfile);
+                    if contains(txt, oldtxt)
+                        txt = replace(txt, oldtxt, newtxt);
+                        obj.writetxt(txt, xmlfile);
+                    end
+                end
+            end
+        end
+        
     end
 end
 
