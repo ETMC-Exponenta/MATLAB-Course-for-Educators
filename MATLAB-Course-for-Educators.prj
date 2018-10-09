@@ -22,6 +22,10 @@
 .git
 .gitignore
 *.url
+Dev.m
+dev_on.m
+**/**.asv
+1. Основы MATLAB
 %
 % A single file in a subfolder of the toolbox folder:
 % example/.svn
@@ -94,11 +98,10 @@
       <file>D:\MATLAB\MATLAB-Course-for-Educators</file>
     </fileset.rootdir>
     <fileset.rootfiles>
-      <file>${PROJECT_ROOT}\1. Основы MATLAB</file>
-      <file>${PROJECT_ROOT}\2. Преподавание с MATLAB</file>
       <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
+      <file>${PROJECT_ROOT}\EduCourseFiles</file>
       <file>${PROJECT_ROOT}\icon-16.png</file>
       <file>${PROJECT_ROOT}\icon-24.png</file>
       <file>${PROJECT_ROOT}\icon-install.png</file>
