@@ -46,8 +46,8 @@ dev_on.m
     <param.registered.apps>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
     </param.registered.apps>
-    <param.docs />
-    <param.getting.started.guide />
+    <param.docs>${PROJECT_ROOT}\info.xml</param.docs>
+    <param.getting.started.guide>${PROJECT_ROOT}\doc\GettingStarted.mlx</param.getting.started.guide>
     <param.matlabpath.excludes />
     <param.javaclasspath.excludes />
     <param.exported.on.package>false</param.exported.on.package>
@@ -77,8 +77,6 @@ dev_on.m
       <param.examples />
       <param.demosxml />
       <param.apps />
-      <param.docs />
-      <param.getting.started.guide />
       <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
       <param.exported.on.package />
@@ -100,13 +98,16 @@ dev_on.m
     <fileset.rootfiles>
       <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
+      <file>${PROJECT_ROOT}\doc</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
+      <file>${PROJECT_ROOT}\icon-help.png</file>
       <file>${PROJECT_ROOT}\icon-install.png</file>
       <file>${PROJECT_ROOT}\icon-save.png</file>
       <file>${PROJECT_ROOT}\icon-start.png</file>
       <file>${PROJECT_ROOT}\icon-store.png</file>
       <file>${PROJECT_ROOT}\icon.png</file>
+      <file>${PROJECT_ROOT}\info.xml</file>
       <file>${PROJECT_ROOT}\README.md</file>
       <file>${PROJECT_ROOT}\resources</file>
     </fileset.rootfiles>
