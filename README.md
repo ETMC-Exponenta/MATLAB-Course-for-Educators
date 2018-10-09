@@ -16,7 +16,7 @@
 
 MATLAB версии не ниже R2018b или [MATLAB Online](https://matlab.mathworks.com/)\*. Также требуется доступ к [MATLAB Drive](https://drive.matlab.com/) и [MATLAB Grader](https://grader.mathworks.com/).
 
-\* раздел "Лабораторные работы" выполняется только в компьютерной версии MATLAB
+\* *раздел "Лабораторные работы" выполняется только в компьютерной версии MATLAB*
 
 ## Установка
 Скачайте и запустите файл [MATLAB-Course-for-Educators.mltbx](https://github.com/ETMC-Exponenta/MATLAB-Course-for-Educators/raw/master/MATLAB-Course-for-Educators.mltbx)
