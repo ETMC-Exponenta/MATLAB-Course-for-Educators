@@ -16,16 +16,16 @@ classdef Tools < handle
     methods
         function obj = Tools()
             % Tools Constructor
-            conf = ToolboxBuilderConfig();
+            conf = ToolboxConfig();
             obj.name = conf.name;
             obj.pname = conf.pname;
             obj.origin = erase(conf.origin, '.git');
+            obj.root = fileparts(mfilename('fullpath'));
+            obj.builder = conf.builder;
             if ~isempty(obj.pname)
                 obj.pv = obj.gpv();
             end
             obj.gcv();
-            obj.root = fileparts(mfilename('fullpath'));
-            obj.builder = conf.ver;
         end
         
         function [pname, fname] = getname(obj)

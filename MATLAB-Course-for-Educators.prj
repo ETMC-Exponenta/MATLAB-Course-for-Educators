@@ -99,10 +99,8 @@ dev_on.m
       <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\doc</file>
-      <file>${PROJECT_ROOT}\Doc.m</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
-      <file>${PROJECT_ROOT}\Examples.m</file>
       <file>${PROJECT_ROOT}\icon-help.png</file>
       <file>${PROJECT_ROOT}\icon-install.png</file>
       <file>${PROJECT_ROOT}\icon-save.png</file>
@@ -112,10 +110,8 @@ dev_on.m
       <file>${PROJECT_ROOT}\info.xml</file>
       <file>${PROJECT_ROOT}\README.md</file>
       <file>${PROJECT_ROOT}\resources</file>
-      <file>${PROJECT_ROOT}\ToolboxBuilderConfig.m</file>
+      <file>${PROJECT_ROOT}\ToolboxConfig.m</file>
       <file>${PROJECT_ROOT}\Tools.m</file>
-      <file>${PROJECT_ROOT}\update.m</file>
-      <file>${PROJECT_ROOT}\Ver.m</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded>
