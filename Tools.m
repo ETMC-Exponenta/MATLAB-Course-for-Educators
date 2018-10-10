@@ -72,10 +72,15 @@ classdef Tools < handle
             % Get internet version from GitHub
             iname = string(extractAfter(obj.origin, 'https://github.com/'));
             url = "https://api.github.com/repos/" + iname + "/releases/latest";
-            r = webread(url);
-            iv = r.tag_name;
-            iv = erase(iv, 'v');
+            try
+                r = webread(url);
+                iv = r.tag_name;
+                iv = erase(iv, 'v');
+            catch e
+                iv = '';
+            end
             obj.iv = iv;
+            r = '';
         end
         
         function [cv, iv, r] = ver(obj, echo)
@@ -141,7 +146,7 @@ classdef Tools < handle
         function yes = isupdate(obj)
             % Check that update is available
             obj.ver(0);
-            yes = ~isequal(obj.cv, obj.iv);
+            yes = ~isempty(obj.iv) & ~isequal(obj.cv, obj.iv);
         end
         
         function doc(obj)
