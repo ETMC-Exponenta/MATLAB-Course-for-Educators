@@ -1,56 +1,44 @@
-classdef Dev < handle
+classdef Dev < Tools
     % Useful functions for developers
     
-    properties
-        pname % project name
-        fname % name of project file
-        v % project version
-    end
-    
     methods
-        function obj = Dev(pname)
+        function obj = Dev()
             %DEV Constructor
-            if nargin < 1
-                fs = dir('./*.prj');
-                fname = fs(1).name;
-                [~, pname] = fileparts(fname);
-            end
-            obj.pname = pname;
-            obj.fname = pname + ".prj";
-            obj.v = matlab.addons.toolbox.toolboxVersion(obj.fname);
+            obj = obj@Tools();
         end
         
-        function deploy(obj, v)
+        function deploy(obj, pv)
             % Deploy toolbox for specified version
             if nargin > 1
-                matlab.addons.toolbox.toolboxVersion(obj.fname, v);
-                obj.v = v;
+                matlab.addons.toolbox.toolboxVersion(obj.pname, pv);
+                obj.pv = pv;
             end
             obj.seticons();
-            matlab.addons.toolbox.packageToolbox(obj.fname, obj.pname);
+            name = strrep(obj.name, ' ', '-');
+            matlab.addons.toolbox.packageToolbox(obj.pname, name);
             obj.echo('has been deployed');
         end
         
-        function push(obj, v)
+        function push(obj, pv)
             % Commit and push project of specified version
             if nargin > 1
-                matlab.addons.toolbox.toolboxVersion(obj.fname, v);
-                obj.v = v;
+                matlab.addons.toolbox.toolboxVersion(obj.pname, pv);
+                obj.pv = pv;
             end
-            commitcmd = sprintf('git commit -m v%s', obj.v);
+            commitcmd = sprintf('git commit -m v%s', obj.pv);
             system('git add .');
             system(commitcmd);
             system('git push');
             obj.echo('has been pushed');
         end
         
-        function tag(obj, v)
+        function tag(obj, pv)
             % Tag git project for specified version
             if nargin > 1
-                matlab.addons.toolbox.toolboxVersion(obj.fname, v);
-                obj.v = v;
+                matlab.addons.toolbox.toolboxVersion(obj.pname, pv);
+                obj.pv = pv;
             end
-            tagcmd = sprintf('git tag -a v%s -m v%s', obj.v, obj.v);
+            tagcmd = sprintf('git tag -a v%s -m v%s', obj.pv, obj.pv);
             system(tagcmd);
             system('git push --tags')
             obj.echo('has been tagged');
@@ -58,21 +46,7 @@ classdef Dev < handle
         
         function echo(obj, msg)
             % Display service message
-            fprintf('%s v%s %s\n', obj.pname, obj.v, msg);
-        end
-        
-        function txt = readtxt(~, fpath)
-            % Read text from file
-            f = fopen(fpath, 'r', 'n', 'windows-1251');
-            txt = fread(f, '*char')';
-            fclose(f);
-        end
-        
-        function txt = writetxt(~, txt, fpath)
-            % Wtite text to file
-            fid = fopen(fpath, 'w', 'n', 'windows-1251');
-            fwrite(fid, unicode2native(txt, 'windows-1251'));
-            fclose(fid);
+            fprintf('%s v%s %s\n', obj.name, obj.pv, msg);
         end
         
         function seticons(obj)
