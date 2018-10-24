@@ -15,4 +15,6 @@
         <!-- matlabroot/toolbox/matlab/icons -->
         <!-- A Getting Started Guide usually comes first -->
     </tocitem>
+    <tocitem target="GraderAccess.html">Доступ к заданиям MATLAB Grader
+    </tocitem>
 </toc>
