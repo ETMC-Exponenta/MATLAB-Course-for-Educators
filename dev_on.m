@@ -1,3 +1,4 @@
+addEduCourseToPath(0)
 dev = MATLABCourseforEducatorsUpdater
 % to deploy run: dev.deploy(v) i.e. dev.deploy('0.1.1')
 % to build run dev.build or dev.build(v)
