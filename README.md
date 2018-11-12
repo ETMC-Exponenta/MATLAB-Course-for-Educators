@@ -14,15 +14,15 @@
 
 ## Системные требования
 
-MATLAB версии не ниже R2018b или [MATLAB Online](https://matlab.mathworks.com/)\*. Также требуется доступ к [MATLAB Drive](https://drive.matlab.com/) и [MATLAB Grader](https://grader.mathworks.com/).
+MATLAB версии не ниже **R2018b** или [MATLAB Online](https://matlab.mathworks.com/)\*. Также требуется доступ к [MATLAB Drive](https://drive.matlab.com/) и [MATLAB Grader](https://grader.mathworks.com/).
 
-Необходимые пакеты:
+**Необходимые пакеты:**
 - Curve Fitting Toolbox
 - Signal Processing Toolbox
 - Statistics and Machine Learning Toolbox
 - Symbolic Math Toolbox
 
-\* *разделы "2.3. Лабораторные работы, 1.2.15. Восстановление пропусков и прогнозироавние, 1.2.18. Анализ и обработка аудиофайла в MATLAB" рекомендуется проходить в компьютерной версии MATLAB*
+\* *разделы "2.3. Лабораторные работы", "1.2.15. Восстановление пропусков и прогнозироавние", "1.2.18. Анализ и обработка аудиофайла в MATLAB" рекомендуется проходить в настольной версии MATLAB*
 
 ## Установка
 
