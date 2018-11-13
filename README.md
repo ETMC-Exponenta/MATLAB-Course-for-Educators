@@ -20,6 +20,7 @@ MATLAB версии не ниже **R2018b** или [MATLAB Online](https://matl
 
 **Необходимые пакеты:**
 - Curve Fitting Toolbox
+- Optimization Toolbox
 - Signal Processing Toolbox
 - Statistics and Machine Learning Toolbox
 - Symbolic Math Toolbox
