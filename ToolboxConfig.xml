@@ -2,8 +2,8 @@
 <config>
    <name>MATLAB Course for Educators</name>
    <pname>MATLAB-Course-for-Educators.prj</pname>
-   <ptype>toolbox</ptype>
+   <type>toolbox</type>
    <remote>https://github.com/ETMC-Exponenta/MATLAB-Course-for-Educators.git</remote>
-   <updaterv>0.3</updaterv>
+   <extv>1.2</extv>
 </config>
-<!--MATLABCourseforEducatorsUpdater configuration file-->
+<!--Toolbox Extender configuration file. DO NOT DELETE-->

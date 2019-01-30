@@ -1,12 +1,12 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration file="D:\dumbdump\Development\EduCourse_raw\MATLAB-Course-for-Educators.prj" location="D:\dumbdump\Development\EduCourse_raw" name="MATLAB-Course-for-Educators" target="target.toolbox" target-name="Package Toolbox">
+  <configuration file="D:\MATLAB\MATLAB-Course-for-Educators\MATLAB-Course-for-Educators.prj" location="D:\MATLAB\MATLAB-Course-for-Educators" name="MATLAB-Course-for-Educators" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>MATLAB Course for Educators</param.appname>
-    <param.authnamewatermark />
-    <param.email />
-    <param.company />
+    <param.authnamewatermark>Pavel Roslovets</param.authnamewatermark>
+    <param.email>roslovets@exponenta.ru</param.email>
+    <param.company>ETMC Exponenta</param.company>
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
     <param.description>Набор упражнений, заданий и примеров в дополнение к курсу</param.description>
-    <param.screenshot>${PROJECT_ROOT}\icon.png</param.screenshot>
+    <param.screenshot>${PROJECT_ROOT}\icon-ml-course-edu.png</param.screenshot>
     <param.version>0.1.2</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB Course for Educators.mltbx</param.output>
     <param.products.name />
@@ -22,7 +22,7 @@
 .git
 .gitignore
 *.url
-Dev.m
+MATLABCourseforEducatorsDev.m
 dev_on.m
 **/**.asv
 1. Основы MATLAB
@@ -43,7 +43,9 @@ dev_on.m
     <param.examples />
     <param.demosxml />
     <param.apps />
-    <param.registered.apps />
+    <param.registered.apps>
+      <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
+    </param.registered.apps>
     <param.docs>${PROJECT_ROOT}\info.xml</param.docs>
     <param.getting.started.guide>${PROJECT_ROOT}\doc\GettingStarted.mlx</param.getting.started.guide>
     <param.matlabpath.excludes />
@@ -75,7 +77,6 @@ dev_on.m
       <param.examples />
       <param.demosxml />
       <param.apps />
-      <param.registered.apps />
       <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
       <param.exported.on.package />
@@ -92,22 +93,23 @@ dev_on.m
       <param.additional.sw.linux.url />
     </unset>
     <fileset.rootdir>
-      <file>D:\dumbdump\Development\EduCourse_raw</file>
+      <file>D:\MATLAB\MATLAB-Course-for-Educators</file>
     </fileset.rootdir>
     <fileset.rootfiles>
       <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
+      <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\doc</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
       <file>${PROJECT_ROOT}\icon-help.png</file>
       <file>${PROJECT_ROOT}\icon-install.png</file>
+      <file>${PROJECT_ROOT}\icon-ml-course-edu.png</file>
       <file>${PROJECT_ROOT}\icon-save.png</file>
       <file>${PROJECT_ROOT}\icon-start.png</file>
       <file>${PROJECT_ROOT}\icon-store.png</file>
-      <file>${PROJECT_ROOT}\icon.png</file>
       <file>${PROJECT_ROOT}\info.xml</file>
+      <file>${PROJECT_ROOT}\MATLABCourseforEducatorsExtender.m</file>
       <file>${PROJECT_ROOT}\MATLABCourseforEducatorsUpdater.m</file>
-      <file>${PROJECT_ROOT}\prepare_doc.m</file>
       <file>${PROJECT_ROOT}\README.md</file>
       <file>${PROJECT_ROOT}\resources</file>
       <file>${PROJECT_ROOT}\ToolboxConfig.xml</file>
@@ -116,11 +118,11 @@ dev_on.m
     <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
-      <file location="D:\dumbdump\Development\EduCourse_raw" name="MATLAB Course for Educators.mltbx" optional="false">D:\dumbdump\Development\EduCourse_raw\MATLAB Course for Educators.mltbx</file>
+      <file location="D:\MATLAB\MATLAB-Course-for-Educators" name="MATLAB Course for Educators.mltbx" optional="false">D:\MATLAB\MATLAB-Course-for-Educators\MATLAB Course for Educators.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB</root>
+      <root>C:\Program Files\MATLAB\R2018b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />
