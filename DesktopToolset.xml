@@ -4,8 +4,8 @@
       <callback>edu_course_app</callback>
       <summary>Программа для работы с учебными файлами курса</summary>
       <description>Программа позволяет скопировать новые файлы занятий в текущую папку, запустить курс или заархивировать файлы с вашими наработками для удобства их переноса</description>
-      <icon filename="matlab_app_generic_icon_24"/>
-      <icon filename="matlab_app_generic_icon_16"/>
+      <icon path="./" filename="icon_24.png"/>
+      <icon path="./" filename="icon_16.png"/>
       <parent_tool id="my_apps" toolset_id="apps_toolset"/>
    </tool>
 </toolset>
