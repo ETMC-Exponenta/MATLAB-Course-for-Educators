@@ -125,7 +125,7 @@ classdef MATLABCourseforEducatorsExtender < handle
         function name = getname(obj)
             % Get project name from project file
             name = '';
-            ppath = fullfile(obj.root, obj.pname);
+            ppath = obj.getppath();
             if isfile(ppath)
                 txt = obj.readtxt(ppath);
                 name = char(extractBetween(txt, '<param.appname>', '</param.appname>'));
@@ -137,16 +137,32 @@ classdef MATLABCourseforEducatorsExtender < handle
             % Get project file name
             fs = dir(fullfile(obj.root, '*.prj'));
             if ~isempty(fs)
-                pname = fs(1).name;
-                obj.pname = pname;
+                names = {fs.name};
+                isproj = false(1, length(names));
+                for i = 1 : length(names)
+                    txt = obj.readtxt(fullfile(obj.root, names{i}));
+                    isproj(i) = ~contains(txt, '<MATLABProject');
+                end
+                if any(isproj)
+                    names = names(isproj);
+                    pname = names{1};
+                    obj.pname = pname;
+                else
+                    error('Project file was not found in a current folder');
+                end
             else
                 error('Project file was not found in a current folder');
             end
         end
         
+        function ppath = getppath(obj)
+            % Get project file full path
+            ppath = fullfile(obj.root, obj.pname);
+        end
+        
         function type = gettype(obj)
             % Get project type (Toolbox/App)
-            ppath = fullfile(obj.root, obj.pname);
+            ppath = obj.getppath();
             txt = obj.readtxt(ppath);
             if contains(txt, 'plugin.toolbox')
                 type = 'toolbox';
