@@ -7,7 +7,7 @@
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
     <param.description>Набор упражнений, заданий и примеров в дополнение к курсу</param.description>
     <param.screenshot>${PROJECT_ROOT}\icon-ml-course-edu.png</param.screenshot>
-    <param.version>0.1.2</param.version>
+    <param.version>0.1.3</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB Course for Educators.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -96,11 +96,15 @@ dev_on.m
       <file>D:\MATLAB\MATLAB-Course-for-Educators</file>
     </fileset.rootdir>
     <fileset.rootfiles>
+      <file>${PROJECT_ROOT}\.git</file>
+      <file>${PROJECT_ROOT}\.gitignore</file>
       <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
+      <file>${PROJECT_ROOT}\dev_on.m</file>
       <file>${PROJECT_ROOT}\doc</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
+      <file>${PROJECT_ROOT}\icon-download.png</file>
       <file>${PROJECT_ROOT}\icon-help.png</file>
       <file>${PROJECT_ROOT}\icon-install.png</file>
       <file>${PROJECT_ROOT}\icon-ml-course-edu.png</file>
@@ -108,11 +112,15 @@ dev_on.m
       <file>${PROJECT_ROOT}\icon-start.png</file>
       <file>${PROJECT_ROOT}\icon-store.png</file>
       <file>${PROJECT_ROOT}\info.xml</file>
+      <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.mltbx</file>
+      <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.prj</file>
+      <file>${PROJECT_ROOT}\MATLABCourseforEducatorsDev.m</file>
       <file>${PROJECT_ROOT}\MATLABCourseforEducatorsExtender.m</file>
       <file>${PROJECT_ROOT}\MATLABCourseforEducatorsUpdater.m</file>
       <file>${PROJECT_ROOT}\README.md</file>
       <file>${PROJECT_ROOT}\resources</file>
       <file>${PROJECT_ROOT}\ToolboxConfig.xml</file>
+      <file>${PROJECT_ROOT}\Содержание курса и часы.url</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
