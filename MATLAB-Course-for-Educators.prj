@@ -112,6 +112,7 @@ dev_on.m
       <file>${PROJECT_ROOT}\edu_course-icon.png</file>
       <file>${PROJECT_ROOT}\EduCourseApp.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
+      <file>${PROJECT_ROOT}\eduCourseHelp.m</file>
       <file>${PROJECT_ROOT}\eduCoursePrefs.m</file>
       <file>${PROJECT_ROOT}\eduCourseStart.m</file>
       <file>${PROJECT_ROOT}\icon-mat-file-download.png</file>
