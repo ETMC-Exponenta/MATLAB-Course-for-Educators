@@ -16,7 +16,7 @@
 
 ## Системные требования
 
-MATLAB версии не ниже **R2018b** или [MATLAB Online](https://matlab.mathworks.com/)\*. Также требуется доступ к [MATLAB Drive](https://drive.matlab.com/) и [MATLAB Grader](https://grader.mathworks.com/).
+MATLAB версии не ниже **R2019a** или [MATLAB Online](https://matlab.mathworks.com/)\*. Также требуется доступ к [MATLAB Drive](https://drive.matlab.com/) и [MATLAB Grader](https://grader.mathworks.com/).
 
 **Необходимые пакеты:**
 - Curve Fitting Toolbox
@@ -37,9 +37,8 @@ MATLAB версии не ниже **R2018b** или [MATLAB Online](https://matl
 
 Выполните в MATLAB
 ```MATLAB
-r = webread('https://api.github.com/repos/ETMC-Exponenta/MATLAB-Course-for-Educators/releases/latest');
-websave(r.assets.name, r.assets.browser_download_url);
-open(r.assets.name)
+websave('install.m','https://git.io/fjoge')
+install
 ```
 
 ## Как получить доступ к самостоятельным работам в MATLAB Grader?
