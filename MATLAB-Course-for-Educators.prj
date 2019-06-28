@@ -1,8 +1,8 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
   <configuration file="D:\MATLAB\MATLAB-Course-for-Educators\MATLAB-Course-for-Educators.prj" location="D:\MATLAB\MATLAB-Course-for-Educators" name="MATLAB-Course-for-Educators" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>MATLAB Course for Educators</param.appname>
-    <param.authnamewatermark>Pavel Roslovets</param.authnamewatermark>
-    <param.email>roslovets@exponenta.ru</param.email>
+    <param.authnamewatermark>Exponenta Team</param.authnamewatermark>
+    <param.email>tech@exponenta.ru</param.email>
     <param.company>ETMC Exponenta</param.company>
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
     <param.description>Набор упражнений, заданий и примеров в дополнение к курсу</param.description>
@@ -14,31 +14,13 @@
     <param.products.version />
     <param.platforms />
     <param.guid>0952bc4e-df2e-4282-8c73-304725fc861c</param.guid>
-    <param.exclude.filters>% List files contained in your toolbox folder that you would like to exclude
-% from packaging.  Excludes should be listed relative to the toolbox folder.
-% Some examples of how to specify excludes are provided below:
-%
-% A single file in the toolbox folder:
-.git
+    <param.exclude.filters>.git
 .gitignore
 *.url
 MATLABCourseforEducatorsDev.m
 dev_on.m
 **/**.asv
-1. Основы MATLAB
-%
-% A single file in a subfolder of the toolbox folder:
-% example/.svn
-%
-% All files in a subfolder of the toolbox folder:
-% example/*
-%
-% All files of a certain name in all subfolders of the toolbox folder:
-% **/.svn
-%
-% All files matching a pattern in all subfolders of the toolbox folder:
-% **/*.bak
-%</param.exclude.filters>
+install.m</param.exclude.filters>
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
     <param.examples />
     <param.demosxml />
@@ -55,7 +37,7 @@ dev_on.m
     <param.required.addons />
     <param.matlab.project.id />
     <param.matlab.project.name />
-    <param.release.start>R2018b</param.release.start>
+    <param.release.start>R2019a</param.release.start>
     <param.release.end>latest</param.release.end>
     <param.release.current.only>false</param.release.current.only>
     <param.compatiblity.windows>true</param.compatiblity.windows>
@@ -69,8 +51,6 @@ dev_on.m
     <param.additional.sw.mac.url />
     <param.additional.sw.linux.url />
     <unset>
-      <param.authnamewatermark />
-      <param.email />
       <param.company />
       <param.output />
       <param.products.name />
@@ -103,11 +83,8 @@ dev_on.m
       <file>${PROJECT_ROOT}</file>
     </fileset.rootdir>
     <fileset.rootfiles>
-      <file>${PROJECT_ROOT}\.git</file>
-      <file>${PROJECT_ROOT}\.gitignore</file>
       <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
-      <file>${PROJECT_ROOT}\dev_on.m</file>
       <file>${PROJECT_ROOT}\doc</file>
       <file>${PROJECT_ROOT}\edu_course-icon.png</file>
       <file>${PROJECT_ROOT}\EduCourseApp.mlapp</file>
@@ -121,15 +98,11 @@ dev_on.m
       <file>${PROJECT_ROOT}\icon-my-book-doc.png</file>
       <file>${PROJECT_ROOT}\icon-my-update-daa520.png</file>
       <file>${PROJECT_ROOT}\info.xml</file>
-      <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.mltbx</file>
-      <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.prj</file>
-      <file>${PROJECT_ROOT}\MATLABCourseforEducatorsDev.m</file>
       <file>${PROJECT_ROOT}\MATLABCourseforEducatorsExtender.m</file>
       <file>${PROJECT_ROOT}\MATLABCourseforEducatorsUpdater.m</file>
       <file>${PROJECT_ROOT}\README.md</file>
       <file>${PROJECT_ROOT}\resources</file>
       <file>${PROJECT_ROOT}\ToolboxConfig.xml</file>
-      <file>${PROJECT_ROOT}\Содержание курса и часы.url</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
