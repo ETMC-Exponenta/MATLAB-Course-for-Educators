@@ -6,8 +6,8 @@
     <param.company>ETMC Exponenta</param.company>
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
     <param.description>Набор упражнений, заданий и примеров в дополнение к курсу</param.description>
-    <param.screenshot>${PROJECT_ROOT}\icon-ml-course-edu.png</param.screenshot>
-    <param.version>0.1.3</param.version>
+    <param.screenshot>${PROJECT_ROOT}\edu_course-icon.png</param.screenshot>
+    <param.version>0.2.0</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB Course for Educators.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -51,6 +51,9 @@ dev_on.m
     <param.matlabpath.excludes />
     <param.javaclasspath.excludes />
     <param.exported.on.package>false</param.exported.on.package>
+    <param.required.addons />
+    <param.matlab.project.id />
+    <param.matlab.project.name />
     <param.release.start>R2018b</param.release.start>
     <param.release.end>latest</param.release.end>
     <param.release.current.only>false</param.release.current.only>
@@ -80,6 +83,9 @@ dev_on.m
       <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
       <param.exported.on.package />
+      <param.required.addons />
+      <param.matlab.project.id />
+      <param.matlab.project.name />
       <param.release.current.only />
       <param.compatiblity.windows />
       <param.compatiblity.macos />
@@ -93,7 +99,7 @@ dev_on.m
       <param.additional.sw.linux.url />
     </unset>
     <fileset.rootdir>
-      <file>D:\MATLAB\MATLAB-Course-for-Educators</file>
+      <file>${PROJECT_ROOT}</file>
     </fileset.rootdir>
     <fileset.rootfiles>
       <file>${PROJECT_ROOT}\.git</file>
@@ -102,15 +108,14 @@ dev_on.m
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\dev_on.m</file>
       <file>${PROJECT_ROOT}\doc</file>
+      <file>${PROJECT_ROOT}\edu_course-icon.png</file>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
-      <file>${PROJECT_ROOT}\icon-download.png</file>
-      <file>${PROJECT_ROOT}\icon-help.png</file>
-      <file>${PROJECT_ROOT}\icon-install.png</file>
-      <file>${PROJECT_ROOT}\icon-ml-course-edu.png</file>
-      <file>${PROJECT_ROOT}\icon-save.png</file>
-      <file>${PROJECT_ROOT}\icon-start.png</file>
-      <file>${PROJECT_ROOT}\icon-store.png</file>
+      <file>${PROJECT_ROOT}\icon-mat-file-download.png</file>
+      <file>${PROJECT_ROOT}\icon-mat-help.png</file>
+      <file>${PROJECT_ROOT}\icon-mw-box-project.png</file>
+      <file>${PROJECT_ROOT}\icon-my-book-doc.png</file>
+      <file>${PROJECT_ROOT}\icon-my-update-daa520.png</file>
       <file>${PROJECT_ROOT}\info.xml</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.mltbx</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.prj</file>
@@ -126,18 +131,16 @@ dev_on.m
     <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
-      <file location="D:\MATLAB\MATLAB-Course-for-Educators" name="MATLAB Course for Educators.mltbx" optional="false">D:\MATLAB\MATLAB-Course-for-Educators\MATLAB Course for Educators.mltbx</file>
+      <file location="${PROJECT_ROOT}" name="MATLAB Course for Educators.mltbx" optional="false">D:\MATLAB\MATLAB-Course-for-Educators\MATLAB Course for Educators.mltbx</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2018b</root>
+      <root>C:\Program Files\MATLAB\R2019a</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />
         <toolbox name="gpucoder" />
         <toolbox name="fixedpoint" />
-        <toolbox name="matlabhdlcoder" />
-        <toolbox name="polyspacebugfinder" />
         <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
@@ -159,16 +162,6 @@ dev_on.m
         <fixedpoint>
           <enabled>true</enabled>
         </fixedpoint>
-      </toolbox>
-      <toolbox>
-        <matlabhdlcoder>
-          <enabled>true</enabled>
-        </matlabhdlcoder>
-      </toolbox>
-      <toolbox>
-        <polyspacebugfinder>
-          <enabled>true</enabled>
-        </polyspacebugfinder>
       </toolbox>
       <toolbox>
         <neuralnetwork>
