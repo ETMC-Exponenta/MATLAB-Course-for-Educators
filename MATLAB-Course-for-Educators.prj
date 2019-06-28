@@ -45,6 +45,7 @@ dev_on.m
     <param.apps />
     <param.registered.apps>
       <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
+      <file>${PROJECT_ROOT}\EduCourseApp.mlapp</file>
     </param.registered.apps>
     <param.docs>${PROJECT_ROOT}\info.xml</param.docs>
     <param.getting.started.guide>${PROJECT_ROOT}\doc\GettingStarted.mlx</param.getting.started.guide>
@@ -109,8 +110,10 @@ dev_on.m
       <file>${PROJECT_ROOT}\dev_on.m</file>
       <file>${PROJECT_ROOT}\doc</file>
       <file>${PROJECT_ROOT}\edu_course-icon.png</file>
-      <file>${PROJECT_ROOT}\edu_course_app.mlapp</file>
+      <file>${PROJECT_ROOT}\EduCourseApp.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
+      <file>${PROJECT_ROOT}\eduCoursePrefs.m</file>
+      <file>${PROJECT_ROOT}\eduCourseStart.m</file>
       <file>${PROJECT_ROOT}\icon-mat-file-download.png</file>
       <file>${PROJECT_ROOT}\icon-mat-help.png</file>
       <file>${PROJECT_ROOT}\icon-mw-box-project.png</file>
