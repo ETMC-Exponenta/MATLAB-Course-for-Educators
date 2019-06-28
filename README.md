@@ -37,8 +37,7 @@ MATLAB версии не ниже **R2019a** или [MATLAB Online](https://matl
 
 Выполните в MATLAB
 ```MATLAB
-websave('install.m','https://git.io/fjoge')
-install
+eval(webread('https://git.io/fjoaT'))
 ```
 
 ## Как получить доступ к самостоятельным работам в MATLAB Grader?
