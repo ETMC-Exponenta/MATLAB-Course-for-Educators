@@ -51,6 +51,8 @@ classdef MATLABCourseforEducatorsExtender < handle
                     vc = char(vc);
                 elseif isempty(vc)
                     vc = '';
+                else
+                    vc = char(vc(end));
                 end
             else
                 tbx = matlab.apputil.getInstalledAppInfo;
@@ -80,13 +82,18 @@ classdef MATLABCourseforEducatorsExtender < handle
             if isempty(guid)
                 disp('Nothing to uninstall');
             else
-                if obj.type == "toolbox"
-                    matlab.addons.uninstall(guid);
-                else
-                    matlab.apputil.uninstall(guid);
+                guid = string(guid);
+                for i = 1 : length(guid)
+                    if obj.type == "toolbox"
+                        matlab.addons.uninstall(char(guid(i)));
+                    else
+                        matlab.apputil.uninstall(char(guid(i)));
+                    end
                 end
-                obj.echo('has been uninstalled');
-                obj.gvc();
+                disp(obj.name + " was uninstalled");
+                try
+                    obj.gvc();
+                end
             end
         end
         
@@ -110,6 +117,26 @@ classdef MATLABCourseforEducatorsExtender < handle
             % cd to Examples dir
             expath = fullfile(obj.root, 'examples');
             cd(expath);
+        end
+        
+        function web(obj)
+            % Open GitHub page
+            web(obj.remote, '-browser');
+        end
+        
+        function addfav(obj, label, code, icon)
+            % Add favorite
+            favs = com.mathworks.mlwidgets.favoritecommands.FavoriteCommands.getInstance();
+            nfav = com.mathworks.mlwidgets.favoritecommands.FavoriteCommandProperties();
+            nfav.setLabel(label);
+            nfav.setCategoryLabel(obj.name);
+            nfav.setCode(code);
+            if nargin > 3
+                nfav.setIconPath(obj.root);
+                nfav.setIconName(icon);
+            end
+            nfav.setIsOnQuickToolBar(true);
+            favs.addCommand(nfav);
         end
         
     end
@@ -148,16 +175,20 @@ classdef MATLABCourseforEducatorsExtender < handle
                     pname = names{1};
                     obj.pname = pname;
                 else
-                    error('Project file was not found in a current folder');
+                    %warning('Project file was not found in a current folder');
                 end
             else
-                error('Project file was not found in a current folder');
+                %warning('Project file was not found in a current folder');
             end
         end
         
         function ppath = getppath(obj)
             % Get project file full path
-            ppath = fullfile(obj.root, obj.pname);
+            if ~isempty(obj.pname)
+                ppath = fullfile(obj.root, obj.pname);
+            else
+                ppath = '';
+            end
         end
         
         function type = gettype(obj)
@@ -178,6 +209,10 @@ classdef MATLABCourseforEducatorsExtender < handle
             % Get remote (GitHub) address via Git
             [~, cmdout] = system('git remote -v');
             remote = extractBetween(cmdout, 'https://', '.git', 'Boundaries', 'inclusive');
+            if isempty(remote)
+                remote = extractBetween(cmdout, 'https://', '(', 'Boundaries', 'inclusive');
+                remote = strtrim(erase(remote, '('));
+            end
             if ~isempty(remote)
                 remote = remote(end);
             end
@@ -193,16 +228,22 @@ classdef MATLABCourseforEducatorsExtender < handle
         
         function txt = readtxt(~, fpath)
             % Read text from file
-            f = fopen(fpath, 'r', 'n', 'windows-1251');
-            txt = fread(f, '*char')';
-            fclose(f);
+            if isfile(fpath)
+                f = fopen(fpath, 'r', 'n', 'windows-1251');
+                txt = fread(f, '*char')';
+                fclose(f);
+            else
+                txt = '';
+            end
         end
         
         function writetxt(~, txt, fpath)
             % Wtite text to file
-            fid = fopen(fpath, 'w', 'n', 'windows-1251');
-            fwrite(fid, unicode2native(txt, 'windows-1251'));
-            fclose(fid);
+            if isfile(fpath)
+                fid = fopen(fpath, 'w', 'n', 'windows-1251');
+                fwrite(fid, unicode2native(txt, 'windows-1251'));
+                fclose(fid);
+            end
         end
         
         function txt = txtrep(obj, fpath, old, new)
@@ -252,6 +293,45 @@ classdef MATLABCourseforEducatorsExtender < handle
                 end
                 i = char(i);
             end
+        end
+        
+        function [nname, npath] = cloneclass(obj, classname, sourcedir, prename)
+            % Clone Toolbox Extander class to current Project folder
+            if nargin < 4
+                prename = "Toolbox";
+            end
+            if nargin < 3
+                sourcedir = pwd;
+            end
+            if nargin < 2
+                classname = "Extender";
+            else
+                classname = lower(char(classname));
+                classname(1) = upper(classname(1));
+            end
+            pname = obj.getvalidname;
+            if isempty(pname)
+                pname = 'Toolbox';
+            end
+            oname = string(prename) + classname;
+            nname = pname + string(classname);
+            npath = fullfile(obj.root, nname + ".m");
+            opath = fullfile(sourcedir, oname + ".m");
+            copyfile(opath, npath);
+            obj.txtrep(npath, "obj = " + oname, "obj = " + nname);
+            obj.txtrep(npath, "classdef " + oname, "classdef " + nname);
+            obj.txtrep(npath, "obj.ext = MATLABCourseforEducatorsExtender", "obj.ext = " + obj.getvalidname + "Extender");
+            obj.txtrep(npath, "upd = MATLABCourseforEducatorsUpdater", "upd = " + obj.getvalidname + "Updater");
+        end
+        
+        function name = getselfname(~)
+            % Get self class name
+            name = mfilename('class');
+        end
+        
+        function webrel(obj)
+            % Open GitHub releases webpage
+            web(obj.remote + "/releases", '-browser');
         end
         
     end
