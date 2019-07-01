@@ -102,6 +102,7 @@ install.m</param.exclude.filters>
       <file>${PROJECT_ROOT}\icon-my-update-daa520.png</file>
       <file>${PROJECT_ROOT}\info.xml</file>
       <file>${PROJECT_ROOT}\install.m</file>
+      <file>${PROJECT_ROOT}\installweb.asv</file>
       <file>${PROJECT_ROOT}\installweb.m</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.mltbx</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.prj</file>
