@@ -6,7 +6,7 @@
     <param.company>ETMC Exponenta</param.company>
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
     <param.description>Набор упражнений, заданий и примеров в дополнение к курсу</param.description>
-    <param.screenshot>${PROJECT_ROOT}\edu_course-icon.png</param.screenshot>
+    <param.screenshot>${PROJECT_ROOT}\edu-course-icon.png</param.screenshot>
     <param.version>0.2.0</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB Course for Educators.mltbx</param.output>
     <param.products.name />
@@ -89,7 +89,7 @@ install.m</param.exclude.filters>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
       <file>${PROJECT_ROOT}\dev_on.m</file>
       <file>${PROJECT_ROOT}\doc</file>
-      <file>${PROJECT_ROOT}\edu_course-icon.png</file>
+      <file>${PROJECT_ROOT}\edu-course-icon.png</file>
       <file>${PROJECT_ROOT}\EduCourseApp.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
       <file>${PROJECT_ROOT}\eduCourseHelp.m</file>
@@ -102,6 +102,7 @@ install.m</param.exclude.filters>
       <file>${PROJECT_ROOT}\icon-my-update-daa520.png</file>
       <file>${PROJECT_ROOT}\info.xml</file>
       <file>${PROJECT_ROOT}\install.m</file>
+      <file>${PROJECT_ROOT}\installweb.m</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.mltbx</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.prj</file>
       <file>${PROJECT_ROOT}\MATLABCourseforEducatorsDev.m</file>
