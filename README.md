@@ -37,7 +37,7 @@ MATLAB версии не ниже **R2019a** или [MATLAB Online](https://matl
 
 Выполните в MATLAB
 ```MATLAB
-eval(webread('https://git.io/fjoaT'))
+eval(webread('https://exponenta.ru/install/edu'))
 ```
 
 ## Как получить доступ к самостоятельным работам в MATLAB Grader?
