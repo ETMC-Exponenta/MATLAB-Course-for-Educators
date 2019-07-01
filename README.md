@@ -29,16 +29,17 @@ MATLAB версии не ниже **R2019a** или [MATLAB Online](https://matl
 
 ## Установка
 
-### Способ 1
-
-Скачайте и запустите файл [MATLAB-Course-for-Educators.mltbx](https://github.com/ETMC-Exponenta/MATLAB-Course-for-Educators/raw/master/MATLAB-Course-for-Educators.mltbx)
-
-### Способ 2
+### Способ 1 (рекомендуемый)
 
 Выполните в MATLAB
 ```MATLAB
 eval(webread('https://exponenta.ru/install/edu'))
 ```
+
+### Способ 2
+
+Скачайте и запустите файл [MATLAB-Course-for-Educators.mltbx](https://github.com/ETMC-Exponenta/MATLAB-Course-for-Educators/raw/master/MATLAB-Course-for-Educators.mltbx)
+
 
 ## Как получить доступ к самостоятельным работам в MATLAB Grader?
 
