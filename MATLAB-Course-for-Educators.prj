@@ -7,7 +7,7 @@
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
     <param.description>Учебный курс для обучения преподавателей высших учебных заведений основам MATLAB и преподаванию с помощью MATLAB</param.description>
     <param.screenshot>${PROJECT_ROOT}\edu-course-icon.png</param.screenshot>
-    <param.version>0.3</param.version>
+    <param.version>0.3.0</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB Course for Educators.mltbx</param.output>
     <param.products.name />
     <param.products.id />
