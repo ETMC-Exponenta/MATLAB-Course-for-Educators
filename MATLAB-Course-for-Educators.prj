@@ -5,9 +5,9 @@
     <param.email>tech@exponenta.ru</param.email>
     <param.company>ETMC Exponenta</param.company>
     <param.summary>Материалы курса "MATLAB для преподавателей"</param.summary>
-    <param.description>Набор упражнений, заданий и примеров в дополнение к курсу</param.description>
+    <param.description>Учебный курс для обучения преподавателей высших учебных заведений основам MATLAB и преподаванию с помощью MATLAB</param.description>
     <param.screenshot>${PROJECT_ROOT}\edu-course-icon.png</param.screenshot>
-    <param.version>0.2.0</param.version>
+    <param.version>0.3</param.version>
     <param.output>${PROJECT_ROOT}\MATLAB Course for Educators.mltbx</param.output>
     <param.products.name />
     <param.products.id />
@@ -17,10 +17,12 @@
     <param.exclude.filters>.git
 .gitignore
 *.url
-MATLABCourseforEducatorsDev.m
-dev_on.m
 **/**.asv
-install.m</param.exclude.filters>
+install.m
+**/*.asv
+installweb.m
+resources/project
+dev</param.exclude.filters>
     <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
     <param.examples />
     <param.demosxml />
@@ -31,7 +33,10 @@ install.m</param.exclude.filters>
     </param.registered.apps>
     <param.docs>${PROJECT_ROOT}\info.xml</param.docs>
     <param.getting.started.guide>${PROJECT_ROOT}\doc\GettingStarted.mlx</param.getting.started.guide>
-    <param.matlabpath.excludes />
+    <param.matlabpath.excludes>
+      <item>/dev</item>
+      <item>/EduCourseFiles</item>
+    </param.matlabpath.excludes>
     <param.javaclasspath.excludes />
     <param.exported.on.package>false</param.exported.on.package>
     <param.required.addons />
@@ -61,7 +66,6 @@ install.m</param.exclude.filters>
       <param.examples />
       <param.demosxml />
       <param.apps />
-      <param.matlabpath.excludes />
       <param.javaclasspath.excludes />
       <param.exported.on.package />
       <param.required.addons />
@@ -85,34 +89,25 @@ install.m</param.exclude.filters>
     <fileset.rootfiles>
       <file>${PROJECT_ROOT}\.git</file>
       <file>${PROJECT_ROOT}\.gitignore</file>
-      <file>${PROJECT_ROOT}\addEduCourseToPath.m</file>
       <file>${PROJECT_ROOT}\DesktopToolset.xml</file>
-      <file>${PROJECT_ROOT}\dev_on.m</file>
+      <file>${PROJECT_ROOT}\dev</file>
       <file>${PROJECT_ROOT}\doc</file>
       <file>${PROJECT_ROOT}\edu-course-icon.png</file>
       <file>${PROJECT_ROOT}\EduCourseApp.mlapp</file>
       <file>${PROJECT_ROOT}\EduCourseFiles</file>
-      <file>${PROJECT_ROOT}\eduCourseHelp.m</file>
-      <file>${PROJECT_ROOT}\eduCoursePrefs.m</file>
-      <file>${PROJECT_ROOT}\eduCourseStart.m</file>
-      <file>${PROJECT_ROOT}\icon-mat-file-download.png</file>
-      <file>${PROJECT_ROOT}\icon-mat-help.png</file>
-      <file>${PROJECT_ROOT}\icon-mw-box-project.png</file>
-      <file>${PROJECT_ROOT}\icon-my-book-doc.png</file>
-      <file>${PROJECT_ROOT}\icon-my-update-daa520.png</file>
+      <file>${PROJECT_ROOT}\icons</file>
       <file>${PROJECT_ROOT}\info.xml</file>
       <file>${PROJECT_ROOT}\install.m</file>
-      <file>${PROJECT_ROOT}\installweb.asv</file>
       <file>${PROJECT_ROOT}\installweb.m</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.mltbx</file>
       <file>${PROJECT_ROOT}\MATLAB-Course-for-Educators.prj</file>
-      <file>${PROJECT_ROOT}\MATLABCourseforEducatorsDev.m</file>
-      <file>${PROJECT_ROOT}\MATLABCourseforEducatorsExtender.m</file>
-      <file>${PROJECT_ROOT}\MATLABCourseforEducatorsUpdater.m</file>
+      <file>${PROJECT_ROOT}\MATLABCourseForEducatorsExtender.m</file>
+      <file>${PROJECT_ROOT}\MATLABCourseForEducatorsProject.prj</file>
+      <file>${PROJECT_ROOT}\MATLABCourseForEducatorsUpdater.m</file>
       <file>${PROJECT_ROOT}\README.md</file>
       <file>${PROJECT_ROOT}\resources</file>
+      <file>${PROJECT_ROOT}\scripts</file>
       <file>${PROJECT_ROOT}\ToolboxConfig.xml</file>
-      <file>${PROJECT_ROOT}\Содержание курса и часы.url</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
     <fileset.depfun.excluded />
@@ -122,12 +117,13 @@ install.m</param.exclude.filters>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2019a</root>
+      <root>C:\Program Files\MATLAB\R2019b</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
         <toolbox name="embeddedcoder" />
         <toolbox name="gpucoder" />
         <toolbox name="fixedpoint" />
+        <toolbox name="matlabhdlcoder" />
         <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
@@ -149,6 +145,11 @@ install.m</param.exclude.filters>
         <fixedpoint>
           <enabled>true</enabled>
         </fixedpoint>
+      </toolbox>
+      <toolbox>
+        <matlabhdlcoder>
+          <enabled>true</enabled>
+        </matlabhdlcoder>
       </toolbox>
       <toolbox>
         <neuralnetwork>

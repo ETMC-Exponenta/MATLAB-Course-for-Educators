@@ -1,4 +1,4 @@
-classdef MATLABCourseforEducatorsExtender < handle
+classdef MATLABCourseForEducatorsExtender < handle
     % Contains core functions. Required for other classes and functionality
     % By Pavel Roslovets, ETMC Exponenta
     % https://github.com/ETMC-Exponenta/ToolboxExtender
@@ -15,10 +15,11 @@ classdef MATLABCourseforEducatorsExtender < handle
     
     properties (Hidden)
         config = 'ToolboxConfig.xml' % configuration file name
+        project % MATLAB Project handle
     end
     
     methods
-        function obj = MATLABCourseforEducatorsExtender(root)
+        function obj = MATLABCourseForEducatorsExtender(root)
             % Init
             if nargin < 1
                 obj.root = fileparts(mfilename('fullpath'));
@@ -41,23 +42,31 @@ classdef MATLABCourseforEducatorsExtender < handle
         
         function [vc, guid] = gvc(obj)
             % Get current installed version
-            if obj.type == "toolbox"
-                tbx = matlab.addons.toolbox.installedToolboxes;
-                tbx = struct2table(tbx, 'AsArray', true);
-                idx = strcmp(tbx.Name, obj.name);
-                vc = tbx.Version(idx);
-                guid = tbx.Guid(idx);
-                if isscalar(vc)
-                    vc = char(vc);
-                elseif isempty(vc)
+            switch obj.type
+                case "toolbox"
+                    tbx = matlab.addons.toolbox.installedToolboxes;
+                    if ~isempty(tbx)
+                        tbx = struct2table(tbx, 'AsArray', true);
+                        idx = strcmp(tbx.Name, obj.name);
+                        vcs = string(tbx.Version(idx));
+                        guid = tbx.Guid(idx);
+                        vc = '';
+                        for i = 1 : length(vcs)
+                            if matlab.addons.isAddonEnabled(guid{i}, vcs(i))
+                                vc = char(vcs(i));
+                                break
+                            end
+                        end
+                    else
+                        vc = '';
+                        guid = '';
+                    end
+                case "app"
+                    apps = matlab.apputil.getInstalledAppInfo;
                     vc = '';
-                else
-                    vc = char(vc(end));
-                end
-            else
-                tbx = matlab.apputil.getInstalledAppInfo;
-                vc = '';
-                guid = '';
+                    guid = '';
+                otherwise
+                    vc = '';
             end
             obj.vc = vc;
         end
@@ -67,10 +76,13 @@ classdef MATLABCourseforEducatorsExtender < handle
             if nargin < 2
                 fpath = obj.getbinpath();
             end
-            if obj.type == "toolbox"
-                res = matlab.addons.install(fpath);
-            else
-                res = matlab.apputil.install(fpath);
+            switch obj.type
+                case "toolbox"
+                    res = matlab.addons.install(fpath);
+                case "app"
+                    res = matlab.apputil.install(fpath);
+                otherwise
+                    error('Unsupported for %s\n', obj.type);
             end
             obj.gvc();
             obj.echo('has been installed');
@@ -84,10 +96,13 @@ classdef MATLABCourseforEducatorsExtender < handle
             else
                 guid = string(guid);
                 for i = 1 : length(guid)
-                    if obj.type == "toolbox"
-                        matlab.addons.uninstall(char(guid(i)));
-                    else
-                        matlab.apputil.uninstall(char(guid(i)));
+                    switch obj.type
+                        case "toolbox"
+                            matlab.addons.uninstall(char(guid(i)));
+                        case "app"
+                            matlab.apputil.uninstall(char(guid(i)));
+                        otherwise
+                            error('Unsupported for %s\n', obj.type);
                     end
                 end
                 disp(obj.name + " was uninstalled");
@@ -99,17 +114,24 @@ classdef MATLABCourseforEducatorsExtender < handle
         
         function doc(obj, name)
             % Open page from documentation
-            if (nargin < 2) || isempty(name)
-                name = 'GettingStarted';
-            end
-            if ~any(endsWith(name, {'.mlx' '.html'}))
-                name = name + ".html";
-            end
-            docpath = fullfile(obj.root, 'doc', name);
-            if endsWith(name, '.html')
-                web(char(docpath));
-            else
-                open(char(docpath));
+            docdir = fullfile(obj.root, 'doc');
+            if isfolder(docdir)
+                if (nargin < 2) || isempty(name)
+                    name = 'GettingStarted';
+                end
+                if ~any(endsWith(name, {'.mlx' '.html'}))
+                    if computer == "GLNXA64" %% Linux and MATLAB Online
+                        name = name + ".mlx";
+                    else
+                        name = name + ".html";
+                    end
+                end
+                docpath = fullfile(docdir, name);
+                if endsWith(name, '.html')
+                    web(char(docpath));
+                else
+                    open(char(docpath));
+                end
             end
         end
         
@@ -132,11 +154,30 @@ classdef MATLABCourseforEducatorsExtender < handle
             nfav.setCategoryLabel(obj.name);
             nfav.setCode(code);
             if nargin > 3
-                nfav.setIconPath(obj.root);
-                nfav.setIconName(icon);
+                [ipath, iname, iext] = fileparts(icon);
+                nfav.setIconPath(fullfile(obj.root, ipath));
+                nfav.setIconName(iname + string(iext));
             end
             nfav.setIsOnQuickToolBar(true);
             favs.addCommand(nfav);
+        end
+        
+        function yes = isfav(obj, label)
+            % Does favorite exist
+            favs = com.mathworks.mlwidgets.favoritecommands.FavoriteCommands.getInstance();
+            yes = favs.hasCommand(label, obj.name);
+        end
+        
+        function yes = isfavs(obj)
+            % Does favorites category exist
+            favs = com.mathworks.mlwidgets.favoritecommands.FavoriteCommands.getInstance();
+            yes = favs.hasCategory(obj.name);
+        end
+        
+        function yes = rmfav(obj, label)
+            % Remove favorite
+            favs = com.mathworks.mlwidgets.favoritecommands.FavoriteCommands.getInstance();
+            yes = favs.removeCommand(label, obj.name);
         end
         
         function rmfavs(obj)
@@ -160,8 +201,13 @@ classdef MATLABCourseforEducatorsExtender < handle
             name = '';
             ppath = obj.getppath();
             if isfile(ppath)
-                txt = obj.readtxt(ppath);
-                name = char(extractBetween(txt, '<param.appname>', '</param.appname>'));
+                switch obj.type
+                    case "toolbox"
+                        txt = obj.readtxt(ppath);
+                        name = char(extractBetween(txt, '<param.appname>', '</param.appname>'));
+                    case "project"
+                        name = obj.project.Name;
+                end
             end
             obj.name = name;
         end
@@ -174,7 +220,7 @@ classdef MATLABCourseforEducatorsExtender < handle
                 isproj = false(1, length(names));
                 for i = 1 : length(names)
                     txt = obj.readtxt(fullfile(obj.root, names{i}));
-                    isproj(i) = ~contains(txt, '<MATLABProject');
+                    isproj(i) = ~contains(txt, '<MATLABProject111111');
                 end
                 if any(isproj)
                     names = names(isproj);
@@ -205,8 +251,21 @@ classdef MATLABCourseforEducatorsExtender < handle
                 type = 'toolbox';
             elseif contains(txt, 'plugin.apptool')
                 type = 'app';
+            elseif contains(txt, '<MATLABProject')
+                type = 'project';
+                p = [];
+                try
+                    p = currentProject;
+                catch
+                    p = openProject(obj.pname);
+                end
+                if isempty(p)
+                    error('Corrupted project file: %s\n', ppath);
+                else
+                    obj.project = p;
+                end
             else
-                type = '';
+                type = 'package';
             end
             obj.type = type;
         end
@@ -222,14 +281,17 @@ classdef MATLABCourseforEducatorsExtender < handle
             if ~isempty(remote)
                 remote = remote(end);
             end
-            remote = char(remote);
+            remote = obj.cleargit(remote);
             obj.remote = remote;
         end
         
-        function name = getvalidname(obj)
+        function name = getvalidname(obj, cname)
             % Get valid variable name
             name = char(obj.name);
-            name = name(isstrprop(name, 'alpha'));
+            if nargin > 1
+                name = char(name + string(cname));
+            end
+            name = matlab.lang.makeValidName(name);
         end
         
         function txt = readtxt(~, fpath)
@@ -259,15 +321,19 @@ classdef MATLABCourseforEducatorsExtender < handle
             obj.writetxt(txt, fpath);
         end
         
-        function bpath = getbinpath(obj)
+        function [bpath, bname] = getbinpath(obj)
             % Get generated binary file path
             [~, name] = fileparts(obj.pname);
-            if obj.type == "toolbox"
-                ext = ".mltbx";
-            else
-                ext = ".mlappinstall";
+            switch obj.type
+                case "toolbox"
+                    ext = ".mltbx";
+                case "app"
+                    ext = ".mlappinstall";
+                otherwise
+                    error('Unsupported for %s\n', obj.type);
             end
-            bpath = fullfile(obj.root, name + ext);
+            bname = name + ext;
+            bpath = fullfile(obj.root, bname);
         end
         
         function ok = readconfig(obj)
@@ -280,7 +346,7 @@ classdef MATLABCourseforEducatorsExtender < handle
                 obj.name = obj.getxmlitem(conf, 'name');
                 obj.pname = obj.getxmlitem(conf, 'pname');
                 obj.type = obj.getxmlitem(conf, 'type');
-                obj.remote = erase(obj.getxmlitem(conf, 'remote'), '.git');
+                obj.remote = obj.cleargit(obj.getxmlitem(conf, 'remote'));
                 obj.extv = obj.getxmlitem(conf, 'extv');
             end
         end
@@ -326,8 +392,8 @@ classdef MATLABCourseforEducatorsExtender < handle
             copyfile(opath, npath);
             obj.txtrep(npath, "obj = " + oname, "obj = " + nname);
             obj.txtrep(npath, "classdef " + oname, "classdef " + nname);
-            obj.txtrep(npath, "obj.ext = MATLABCourseforEducatorsExtender", "obj.ext = " + obj.getvalidname + "Extender");
-            obj.txtrep(npath, "upd = MATLABCourseforEducatorsUpdater", "upd = " + obj.getvalidname + "Updater");
+            obj.txtrep(npath, "obj.ext = MATLABCourseForEducatorsExtender", "obj.ext = " + obj.getvalidname + "Extender");
+            obj.txtrep(npath, "upd = MATLABCourseForEducatorsUpdater", "upd = " + obj.getvalidname + "Updater");
         end
         
         function name = getselfname(~)
@@ -338,6 +404,38 @@ classdef MATLABCourseforEducatorsExtender < handle
         function webrel(obj)
             % Open GitHub releases webpage
             web(obj.remote + "/releases", '-browser');
+        end
+        
+        function repo = getrepo(obj)
+            % Get repo string from remote URL
+            repo = extractAfter(obj.remote, 'https://github.com/');
+        end
+        
+        function url = getlatesturl(obj)
+            % Get latest release URL
+            url = obj.getapiurl() + "/releases/latest";
+        end
+        
+        function url = getapiurl(obj)
+            % Get GitHub API URL
+            url = "https://api.github.com/repos/" + obj.getrepo();
+        end
+        
+        function url = getrawurl(obj, fname)
+            % Get GitHub raw source URL
+            url = sprintf("https://raw.githubusercontent.com/%s/master/%s", obj.getrepo(), fname);
+        end
+        
+    end
+    
+    methods (Hidden, Static)
+        
+        function remote = cleargit(remote)
+            % Delete .git
+            remote = char(remote);
+            if endsWith(remote, '.git')
+                remote = remote(1:end-4);
+            end
         end
         
     end
