@@ -38,7 +38,7 @@ eval(webread('https://exponenta.ru/install/edu'))
 
 ### Оффлайн-установка
 
-Скачайте и запустите файл [MATLAB-Course-for-Educators.mltbx](https://roslovets.github.io/ghbin/#roslovets/AppDesignerPro#MATLAB-Course-for-Educators.mltbx) из последнего релиза
+Скачайте и запустите файл [MATLAB-Course-for-Educators.mltbx](https://roslovets.github.io/ghbin/#ETMC-Exponenta/MATLAB-Course-for-Educators#MATLAB-Course-for-Educators.mltbx) последнего релиза
 
 ### Сборка (только для разработчиков, R2019a+)
 
